@@ -1,0 +1,39 @@
+@font-face {
+    font-family: digital-clock-font;
+    src: url(fonts/digital-7.regular.ttf);
+}
+
+body {
+    margin: 40px auto;
+    max-width: 650px;
+    line-height: 1.6;
+    font-size: 18px;
+    background-color: Canvas;
+    color: #FAF9F6;
+    color-scheme: light dark;
+    text-align: center;
+}
+
+#timeDisplay {
+    font-weight: bold;
+    color: #db262b;
+    font-size: 4em;
+    font-family: digital-clock-font;
+}
+
+.timerInput {
+    width: 10%;
+    padding: 6px;
+    border-radius: 5px;
+    background-color: #FAF9F6;
+    color: #313639;
+}
+
+.controlButton {
+    padding: 10px 20px;
+    border-radius: 5px;
+    background-color: #FAF9F6;
+    color: #313639;
+    border: 2px solid #FAF9F6;
+    cursor: pointer;
+}
