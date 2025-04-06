@@ -1,18 +1,21 @@
 let minutes = 0;
 let seconds = 0;
 let countdownInterval = null;
-let validInput
+let validInput = true;
 
 function setTimer() {
+    //Setting the timer values to equal inputs from the user
+    minutes = document.getElementById("minutesInput").value;
+    seconds = document.getElementById("secondsInput").value;
     // Check if the input values are valid
     if (
-        document.getElementById("minutesInput").value < 0 ||
-        document.getElementById("secondsInput").value < 0 ||
-        document.getElementById("secondsInput").value >= 60 ||
-        document.getElementById("minutesInput").value % 1 !==0 ||
-        document.getElementById("secondsInput").value % 1 !==0 ||
-        document.getElementById("minutesInput").value === "" ||
-        document.getElementById("secondsInput").value === ""
+        minutes < 0 ||
+        seconds < 0 ||
+        seconds >= 60 ||
+        minutes % 1 !==0 ||
+        seconds % 1 !==0 ||
+        minutes === "" ||
+        seconds === ""
     ) {
         // If not, show an alert and return
         alert("Please enter valid time values.");
@@ -20,8 +23,8 @@ function setTimer() {
         return;
         // If the input values are valid, set the timer
     } else if (document.getElementById("timeDisplay").innerText === "00:00") {
-        minutes = parseInt(document.getElementById("minutesInput").value);
-        seconds = parseInt(document.getElementById("secondsInput").value);
+        minutes = parseInt(minutes);
+        seconds = parseInt(seconds);
         if (minutes < 10) {
             document.getElementById("timeDisplay").innerText = seconds < 10 ? `0${minutes}:0${seconds}` : `0${minutes}:${seconds}`;
         } else {
@@ -39,8 +42,8 @@ function startCountdown() {
     }
     // This loop runs every second, and updates the time display
     countdownInterval = setInterval(() => {
-        if (seconds === 0 || seconds == "00") {
-            if (minutes === 0 || minutes == "00") {
+        if (seconds === 0) {
+            if (minutes === 0) {
                 clearInterval(countdownInterval);
                 document.getElementById("timeDisplay").innerText = "Time's up!";
                 return;
