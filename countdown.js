@@ -5,17 +5,13 @@ let validInput = true;
 
 function setTimer() {
     //Setting the timer values to equal inputs from the user
-    minutes = document.getElementById("minutesInput").value;
-    seconds = document.getElementById("secondsInput").value;
+    minutes = parseInt(document.getElementById("minutesInput").value, 10);
+    seconds = parseInt(document.getElementById("secondsInput").value, 10);
     // Check if the input values are valid
     if (
-        minutes < 0 ||
-        seconds < 0 ||
-        seconds >= 60 ||
-        minutes % 1 !==0 ||
-        seconds % 1 !==0 ||
-        minutes === "" ||
-        seconds === ""
+        minutes < 0 ||  minutes > 999 || //minutes value should be between 0 and 999
+        seconds < 0 || seconds >= 60 || //seconds value should be between 0 and 59
+        isNaN(minutes) || isNaN(seconds) //input values must be numbers
     ) {
         // If not, show an alert and return
         alert("Please enter valid time values.");
@@ -23,8 +19,6 @@ function setTimer() {
         return;
         // If the input values are valid, set the timer
     } else if (document.getElementById("timeDisplay").innerText === "00:00") {
-        minutes = parseInt(minutes);
-        seconds = parseInt(seconds);
         if (minutes < 10) {
             document.getElementById("timeDisplay").innerText = seconds < 10 ? `0${minutes}:0${seconds}` : `0${minutes}:${seconds}`;
         } else {
